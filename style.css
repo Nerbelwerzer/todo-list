@@ -169,7 +169,7 @@ h2 {
 	left: -5px;
 }
 
-.project-list {
+.project-div {
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -177,23 +177,30 @@ h2 {
 	border-right: 1px solid rgb(175, 175, 175);
 }
 
-.project-list ul {
+.project-list {
 	padding-top: 6px;
 }
 
-.project-list ul li {
+.project-list li {
 	padding: 4px;
+	cursor: pointer;
+	font-size: 1.2rem;
 }
-.item-board {
+
+.project-list li:hover {
+	background-color: rgb(167, 219, 243);
+}
+
+.task-div {
 	position: relative;
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	gap: 12px;
 	padding: 30px 25px 25px 25px;
 }
 
-.item-board header {
-	grid-column: span 5;	
+.item-board {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 12px;
+	padding-top: 12px;
 }
 
 .task-card {
