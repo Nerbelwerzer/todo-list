@@ -12,16 +12,14 @@ class TodoItem {
 
 class Project {
     constructor(title) {
-        this.projectTitle = title;
+        this.title = title;
         this.items = [];
     }
 
     addItem(item) { this.items.push(item) }
-
-
 }
 
-const app = (function () {
+const App = (function () {
 
     let projects = JSON.parse(localStorage.getItem("projects")) || [];
     let activeProject = null;
@@ -30,11 +28,13 @@ const app = (function () {
         let newProject = new Project(title)
         projects.push(newProject)
         activeProject = newProject;
+        return newProject
     }
 
-    function newItem(title, notes, dueDate, priority) {
-        let item = new TodoItem(title, notes, dueDate, priority);
-        activeProject.addItem(item);
+    function newItem(form) {
+        let task = new TodoItem(form.title.value, form.notes.value, form.dueDate.value, form.priority.value);
+        activeProject.addItem(task);
+        return task
     }
 
     function dueDateSort() {
@@ -53,19 +53,24 @@ const app = (function () {
         localStorage.setItem("projects", JSON.stringify(projects))
     }
 
-    const getActiveProject = () => { return activeProject }
+    const getActiveProject = () => { return activeProject.items }
+    const setActiveProject = (project) => { activeProject = project }
     const getProjects = () => { return projects }
 
 
 
- return { getActiveProject,
-          getProjects, 
-          addNewProject, 
-          newItem }
+ return { 
+    getActiveProject,
+    setActiveProject,
+    getProjects, 
+    addNewProject, 
+    newItem 
+    }
 })();
 
-app.addNewProject('title')
 
-console.log(app.getActiveProject())
+export { App }
 
-export default { TodoItem, Project, app }
+App.addNewProject('title')
+
+console.log(App.getActiveProject())

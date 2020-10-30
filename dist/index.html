@@ -23,22 +23,25 @@
           <input class="form-field" type="text" id="title" name="title" />
         </div>
         <div class="field-div">
-          <label for="priority">
-            <p>Priority:</p>
-          </label>
-          <input class="form-field" type="text" id="priority" name="priority" />
+          <p>Priority:</p>
+          <input type="radio" id="high-pri" name="priority" value="high" checked>
+          <label for="high-pri">High</label>
+          <input type="radio" id="med-pri" name="priority" value="med">
+          <label for="med-pri">Medium</label>
+          <input type="radio" id="low-pri" name="priority" value="low">
+          <label for="low-pri">Low</label>
         </div>
         <div class="field-div">
           <label for="notes">
             <p>Notes:</p>
           </label>
-          <textarea id="text-area" class="form-field" id="notes" name="notes" ></textarea>
+          <textarea id="text-area" class="form-field" id="notes" name="notes"></textarea>
         </div>
         <div class="field-div">
           <label for="due-date">
             <p>Due:</p>
           </label>
-          <input class="form-field" type="date" id="due-date" name="due-date" />
+          <input class="form-field" type="date" id="due-date" name="dueDate" />
         </div>
         <button class="submit-btn" id="task-submit" type="submit" value="submit">Add to Project</button>
       </form>
@@ -72,11 +75,11 @@
 
   <main>
     <div class="container">
-      <div class="project-list">
+      <div class="project-div">
 
-        <button class="add-btn" id="new-proj-btn"><i class="fas fa-folder-plus"></i></button>
+        <button class="add-btn" id="new-proj-btn"><i class="fas fa-folder-plus" title="Create a new project"></i></button>
         <h2>My projects</h2>
-        <ul>
+        <ul class="project-list" id="project-list">
           <li>Sample project</li>
           <li>Sample project</li>
           <li>Sample project</li>
@@ -85,40 +88,42 @@
           <li>Sample project</li>
         </ul>
       </div>
-      <div class="item-board" id="item-board">
-        <button class="add-btn" id="new-task-btn"><i class="fas fa-plus"></i></button>
-        <header>
-          <h2>My tasks</h2>
-        </header>
-        <div class="task-card">
-          <h3 class="task-title">Task title</h3>
-          <span class="task-due">Due: <time>2/11/2020</time></span>
-          <p class="task-notes">Sample task card notes put here as a placeholder</p>
-        </div>
-        <div class="task-card">
-          <h3 class="task-title">Task title</h3>
-          <span class="task-due">Due: <time>2/11/2020</time></span>
-          <p class="task-notes">Sample task card notes put here as a placeholder</p>
-        </div>
-        <div class="task-card">
-          <h3 class="task-title">Task title</h3>
-          <span class="task-due">Due: <time>2/11/2020</time></span>
-          <p class="task-notes">Sample task card notes put here as a placeholder</p>
-        </div>
-        <div class="task-card">
-          <h3 class="task-title">Task title</h3>
-          <span class="task-due">Due: <time>2/11/2020</time></span>
-          <p class="task-notes">Sample task card notes put here as a placeholder</p>
-        </div>
-        <div class="task-card">
-          <h3 class="task-title">Task title</h3>
-          <span class="task-due">Due: <time>2/11/2020</time></span>
-          <p class="task-notes">Sample task card notes put here as a placeholder</p>
-        </div>
-        <div class="task-card">
-          <h3 class="task-title">Task title</h3>
-          <span class="task-due">Due: <time>2/11/2020</time></span>
-          <p class="task-notes">Sample task card notes put here as a placeholder</p>
+      <div class="task-div" >
+      <button class="add-btn" id="new-task-btn"><i class="fas fa-plus" title="Add a task"></i></button>
+      <header>
+        <h2>My tasks</h2>
+      </header>
+        <div class="item-board" id="item-board">
+          <div class="task-card">
+            <h3 class="task-title">Task title</h3>
+            <span class="task-due">Due: <time>2/11/2020</time></span>
+            <p class="task-notes">Sample task card notes put here as a placeholder</p>
+          </div>
+          <div class="task-card">
+            <h3 class="task-title">Task title</h3>
+            <span class="task-due">Due: <time>2/11/2020</time></span>
+            <p class="task-notes">Sample task card notes put here as a placeholder</p>
+          </div>
+          <div class="task-card">
+            <h3 class="task-title">Task title</h3>
+            <span class="task-due">Due: <time>2/11/2020</time></span>
+            <p class="task-notes">Sample task card notes put here as a placeholder</p>
+          </div>
+          <div class="task-card">
+            <h3 class="task-title">Task title</h3>
+            <span class="task-due">Due: <time>2/11/2020</time></span>
+            <p class="task-notes">Sample task card notes put here as a placeholder</p>
+          </div>
+          <div class="task-card">
+            <h3 class="task-title">Task title</h3>
+            <span class="task-due">Due: <time>2/11/2020</time></span>
+            <p class="task-notes">Sample task card notes put here as a placeholder</p>
+          </div>
+          <div class="task-card">
+            <h3 class="task-title">Task title</h3>
+            <span class="task-due">Due: <time>2/11/2020</time></span>
+            <p class="task-notes">Sample task card notes put here as a placeholder</p>
+          </div>
         </div>
 
       </div>
