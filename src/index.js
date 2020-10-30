@@ -38,10 +38,13 @@ const Doc = (function () {
     function appendProject(project) {
         let li = document.createElement('li');
         li.textContent = project.title;
+        li.setAttribute('class', 'project-title')
         li.addEventListener('click', () => {
             App.setActiveProject(project)
+            highlightTitle(li)
             displayTasks()
         })
+        highlightTitle(li)
         projecList.appendChild(li)
     }
 
@@ -60,13 +63,18 @@ const Doc = (function () {
         itemBoard.appendChild(taskCard)
     }
 
-
     function displayTasks() {
         let taskList = App.getActiveProject()
         itemBoard.textContent = ''
-        for (let i of taskList) {
-            appendTask(i)
+        for (let i of taskList) { appendTask(i) }
+    }
+
+    function highlightTitle(li) {
+        let projectTitles = document.querySelectorAll('.project-title')
+        for (let i of projectTitles) {
+            i.style.backgroundColor = 'transparent'
         }
+        li.style.backgroundColor = '#a7dbf3'
     }
 })();
 
