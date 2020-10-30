@@ -1,0 +1,213 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	font-family: Arial, Helvetica, sans-serif;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+h2 {
+	font-size: 1.5rem
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(27, 27, 27, 0.9);
+    z-index: 2;
+}
+
+.modal-content {
+    position: relative;
+    margin: 10% auto;
+    width: 290px;
+    background: rgb(252, 252, 252);
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 600;
+    padding-bottom: 12px;
+}
+
+.modal-content header {
+    background-color: rgba(38, 178, 221);
+    color: #fff;
+    font-size: 1.2em;
+    text-align: center;
+    width: 100%;
+    padding: 12px 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.modal-content div {
+    padding: 12px 0;
+}
+
+.form-field {
+    padding: 9px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    font-size: inherit;
+}
+
+#text-area {
+	width: 100%;
+	resize: none;
+}
+
+.submit-btn {
+    color: #fff;
+    background-color: rgb(38, 178, 221);
+    border: 1px solid gray;
+    padding: 12px 16px;
+    font: inherit;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.submit-btn:hover{
+    background-color: rgb(32, 140, 173);
+}
+
+#close-btn {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.3em;
+    color: #fff;
+    cursor: pointer;
+}
+
+.task-form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: left;
+}
+
+.task-form p {
+    padding-bottom: 9px;
+}
+
+.text-area {
+	resize: none;
+	width: 100%;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: 1fr 5fr;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.add-btn {
+	border: none;
+	background-color: transparent;
+	font-size: 2rem;
+	cursor: pointer;
+	color: #21c4e0;
+	position: absolute;
+	top: -5px;
+	left: -5px;
+}
+
+.project-list {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	padding: 30px 8px 8px 25px;
+	border-right: 1px solid rgb(175, 175, 175);
+}
+
+.project-list ul {
+	padding-top: 6px;
+}
+
+.project-list ul li {
+	padding: 4px;
+}
+.item-board {
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 12px;
+	padding: 30px 25px 25px 25px;
+}
+
+.item-board header {
+	grid-column: span 5;	
+}
+
+.task-card {
+	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 6px;
+	height: 150px;
+	cursor: pointer;
+
+}
+
+.task-title {
+	text-align: center;
+	border-bottom: 1px solid black;
+}

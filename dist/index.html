@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/32e5e73d4b.js" crossorigin="anonymous"></script>
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Test</title>
+</head>
+
+<body>
+  <div id="task-modal" class="modal">
+    <div class="modal-content">
+      <header>
+        <span>Add a Task</span>
+        <button id="close-btn"><i class="fas fa-times"></i></button>
+      </header>
+      <form id="task-form" class="task-form" onsubmit="return false">
+        <div class="field-div">
+          <label for="title">
+            <p>Title:</p>
+          </label>
+          <input class="form-field" type="text" id="title" name="title" />
+        </div>
+        <div class="field-div">
+          <label for="priority">
+            <p>Priority:</p>
+          </label>
+          <input class="form-field" type="text" id="priority" name="priority" />
+        </div>
+        <div class="field-div">
+          <label for="notes">
+            <p>Notes:</p>
+          </label>
+          <textarea id="text-area" class="form-field" id="notes" name="notes" ></textarea>
+        </div>
+        <div class="field-div">
+          <label for="due-date">
+            <p>Due:</p>
+          </label>
+          <input class="form-field" type="date" id="due-date" name="due-date" />
+        </div>
+        <button class="submit-btn" id="task-submit" type="submit" value="submit">Add to Project</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="project-modal" class="modal">
+    <div class="modal-content">
+      <header>
+        <span>Create a new project</span>
+        <button id="close-btn"><i class="fas fa-times"></i></button>
+      </header>
+      <form id="project-form" class="task-form" onsubmit="return false">
+        <div class="field-div">
+          <label for="title">
+            <p>Name your project:</p>
+          </label>
+          <input class="form-field" type="text" id="title" name="title" />
+        </div>
+        <button class="submit-btn" id="project-submit" type="submit" value="submit">Create project</button>
+      </form>
+    </div>
+
+  </div>
+
+
+  <header>
+    <h1>To-do List</h1>
+  </header>
+
+
+  <main>
+    <div class="container">
+      <div class="project-list">
+
+        <button class="add-btn" id="new-proj-btn"><i class="fas fa-folder-plus"></i></button>
+        <h2>My projects</h2>
+        <ul>
+          <li>Sample project</li>
+          <li>Sample project</li>
+          <li>Sample project</li>
+          <li>Sample project</li>
+          <li>Sample project</li>
+          <li>Sample project</li>
+        </ul>
+      </div>
+      <div class="item-board" id="item-board">
+        <button class="add-btn" id="new-task-btn"><i class="fas fa-plus"></i></button>
+        <header>
+          <h2>My tasks</h2>
+        </header>
+        <div class="task-card">
+          <h3 class="task-title">Task title</h3>
+          <span class="task-due">Due: <time>2/11/2020</time></span>
+          <p class="task-notes">Sample task card notes put here as a placeholder</p>
+        </div>
+        <div class="task-card">
+          <h3 class="task-title">Task title</h3>
+          <span class="task-due">Due: <time>2/11/2020</time></span>
+          <p class="task-notes">Sample task card notes put here as a placeholder</p>
+        </div>
+        <div class="task-card">
+          <h3 class="task-title">Task title</h3>
+          <span class="task-due">Due: <time>2/11/2020</time></span>
+          <p class="task-notes">Sample task card notes put here as a placeholder</p>
+        </div>
+        <div class="task-card">
+          <h3 class="task-title">Task title</h3>
+          <span class="task-due">Due: <time>2/11/2020</time></span>
+          <p class="task-notes">Sample task card notes put here as a placeholder</p>
+        </div>
+        <div class="task-card">
+          <h3 class="task-title">Task title</h3>
+          <span class="task-due">Due: <time>2/11/2020</time></span>
+          <p class="task-notes">Sample task card notes put here as a placeholder</p>
+        </div>
+        <div class="task-card">
+          <h3 class="task-title">Task title</h3>
+          <span class="task-due">Due: <time>2/11/2020</time></span>
+          <p class="task-notes">Sample task card notes put here as a placeholder</p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+  <script src="main.js"></script>
+</body>
+
+</html>
