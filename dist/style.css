@@ -53,7 +53,12 @@ table {
 }
 
 h2 {
-	font-size: 1.5rem
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+
+h3 {
+	font-size: 1.5rem;
 }
 
 
@@ -161,7 +166,7 @@ h2 {
 .add-btn {
 	border: none;
 	background-color: transparent;
-	font-size: 2rem;
+	font-size: 1.6rem;
 	cursor: pointer;
 	color: #21c4e0;
 	position: absolute;
@@ -181,13 +186,13 @@ h2 {
 	padding-top: 6px;
 }
 
-.project-list li {
+.project-title {
 	padding: 4px;
 	cursor: pointer;
 	font-size: 1.2rem;
 }
 
-.project-list li:hover {
+.project-title:hover {
 	background-color: #a7dbf3;
 }
 
@@ -203,18 +208,76 @@ h2 {
 	padding-top: 12px;
 }
 
+.task-div header {
+	display: flex;
+	justify-content: space-between;
+}
+
 .task-card {
+	position: relative;
 	border: 1px solid black;
+	border-radius: 8px;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
-	padding: 6px;
 	height: 150px;
 	cursor: pointer;
+	background-color: rgb(255, 254, 240);
+	box-shadow: 5px 5px 4px #afafaf;
+}
 
+.task-content {
+	padding: 6px;
+}
+
+.task-content p {
+	padding-top: 5px;
+}
+
+.urgent h3 {
+	background-color: #f33434;
+	color: white;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+.medium-pri h3 {
+	background-color: #fdc52a;
+	color: rgb(46, 46, 46);
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+.low-pri h3 {
+	background-color: #39a08f;
+	color: white;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+.medium-header {
+	background-color: #ffbb00;
 }
 
 .task-title {
 	text-align: center;
-	border-bottom: 1px solid black;
+	padding: 4px;
+	border-bottom: 1px solid rgb(153, 153, 153);
+	width: 100%;
+}
+.task-due {
+	font-size: .8rem;
+}
+
+.del-btn {
+	position: absolute;
+	bottom: 6px;
+	right: 6px;
+	color: rgb(204, 204, 204);
+}
+
+#proj-del-btn {
+	color: #fff;
+	background-color: #f33434;
+	border: 1px solid #3a3a3a;
+	border-radius: 5px;
 }

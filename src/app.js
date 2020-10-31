@@ -20,21 +20,37 @@ class Project {
 }
 
 const App = (function () {
-
+    let defaultProject = new Project('Your project');
     let projects = JSON.parse(localStorage.getItem("projects")) || [];
-    let activeProject = null;
+    let activeProject = projects[0] || defaultProject;
 
     function addNewProject(title) {
-        let newProject = new Project(title)
-        projects.push(newProject)
+        let newProject = new Project(title);
+        projects.push(newProject);
         activeProject = newProject;
-        return newProject
+        save();
+        return newProject;
     }
 
     function newItem(form) {
         let task = new TodoItem(form.title.value, form.notes.value, form.dueDate.value, form.priority.value);
-        activeProject.addItem(task);
-        return task
+        activeProject.items.push(task);
+        save();
+        return task;
+    }
+
+    function deleteTask(task) {
+        let index = activeProject.items.indexOf(task);
+        activeProject.items.splice(index, 1);
+        save();
+    }
+
+    function deleteProject() {
+        let index = projects.indexOf(activeProject);
+        projects.splice(index, 1);
+        console.log(projects)
+        activeProject = projects[0] || defaultProject;
+        save();
     }
 
     function dueDateSort() {
@@ -53,7 +69,7 @@ const App = (function () {
         localStorage.setItem("projects", JSON.stringify(projects))
     }
 
-    const getActiveProject = () => { return activeProject.items }
+    const getActiveProject = () => { return activeProject }
     const setActiveProject = (project) => { activeProject = project }
     const getProjects = () => { return projects }
 
@@ -64,13 +80,11 @@ const App = (function () {
     setActiveProject,
     getProjects, 
     addNewProject, 
-    newItem 
+    newItem,
+    deleteTask,
+    deleteProject
     }
 })();
 
 
 export { App }
-
-App.addNewProject('title')
-
-console.log(App.getActiveProject())

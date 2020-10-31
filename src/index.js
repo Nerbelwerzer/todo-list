@@ -8,12 +8,16 @@ const Doc = (function () {
     const taskForm = document.getElementById('task-form')
     const taskSubmit = document.getElementById('task-submit')
     //Projects DOM
-    const projecList = document.getElementById('project-list')
+    const projectList = document.getElementById('project-list')
     const newProjBtn = document.getElementById('new-proj-btn')
     const projModal = document.getElementById('project-modal')
     const projForm = document.getElementById('project-form')
     const projSubmit = document.getElementById('project-submit')
+    const projDel = document.getElementById('proj-del-btn')
 
+
+    displayTasks()
+    displayProjectList()
 
     newTaskBtn.addEventListener('click', () => {
         taskModal.style.display = 'block'
@@ -33,6 +37,13 @@ const Doc = (function () {
         projModal.style.display = 'none'
         let newProject = App.addNewProject(projForm.title.value);
         appendProject(newProject)
+        displayTasks()
+    })
+
+    projDel.addEventListener('click', () => {
+        App.deleteProject()
+        displayProjectList()
+        displayTasks()
     })
 
     function appendProject(project) {
@@ -44,27 +55,46 @@ const Doc = (function () {
             highlightTitle(li)
             displayTasks()
         })
-        highlightTitle(li)
-        projecList.appendChild(li)
+        if (project === App.getActiveProject()) { highlightTitle(li) }
+        projectList.appendChild(li)
     }
 
     function appendTask(task) {
         let taskCard = document.createElement('div')
+        let delBtn = document.createElement('div')
         taskCard.setAttribute('class', 'task-card')
+        delBtn.setAttribute('class', 'del-btn')
+        delBtn.innerHTML = '<i class="fas fa-trash-alt"></i>'
+        delBtn.addEventListener('click', () => {
+            App.deleteTask(task)
+            displayTasks()
+        })
 
         taskCard.innerHTML = `
             <h3 class="task-title">${task.title}</h3>
-            <span class="task-due">Due:<time>${task.dueDate}</time></span>
-            <p class="task-notes">${task.notes}</p>
+            <div class="task-content"><span class="task-due">Due:<time>${task.dueDate}</time></span>
+            <p class="task-notes">${task.notes}</p></div>
            `
         if (task.priority == 'high') {
-            taskCard.style.border = '3px solid red'
+            taskCard.classList.add('urgent')
+        } else if (task.priority == 'med') {
+            taskCard.classList.add('medium-pri')
+        } else {
+            taskCard.classList.add('low-pri')
         }
+        taskCard.appendChild(delBtn)
         itemBoard.appendChild(taskCard)
     }
 
+    function displayProjectList() {
+        projectList.textContent = ''
+        for (let i of App.getProjects()) {
+            appendProject(i)
+        }
+    }
+
     function displayTasks() {
-        let taskList = App.getActiveProject()
+        let taskList = App.getActiveProject().items
         itemBoard.textContent = ''
         for (let i of taskList) { appendTask(i) }
     }
@@ -77,4 +107,6 @@ const Doc = (function () {
         li.style.backgroundColor = '#a7dbf3'
     }
 })();
+
+
 
