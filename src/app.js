@@ -1,13 +1,15 @@
+import { parse } from 'date-fns'
+
+
 class TodoItem {
-    constructor(title, notes, dueDate, priority) {
+    constructor(title, notes, dueDate, dueTime, priority) {
         this.title = title;
         this.notes = notes;
-        this.dueDate = dueDate;
+        this.dueDate = `${dueDate} ${dueTime}`;
         this.priority = priority;
         this.log = new Date();
         this.done = false;
     }
-
 }
 
 class Project {
@@ -33,7 +35,7 @@ const App = (function () {
     }
 
     function newItem(form) {
-        let task = new TodoItem(form.title.value, form.notes.value, form.dueDate.value, form.priority.value);
+        let task = new TodoItem(form.title.value, form.notes.value, form.dueDate.value, form.dueTime.value, form.priority.value);
         activeProject.items.push(task);
         save();
         return task;
