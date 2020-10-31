@@ -13,7 +13,7 @@
     <div class="modal-content">
       <header>
         <span>Add a Task</span>
-        <button id="close-btn"><i class="fas fa-times"></i></button>
+        <button class="close-btn"><i class="fas fa-times"></i></button>
       </header>
       <form id="task-form" class="task-form" onsubmit="return false">
         <div class="field-div">
@@ -39,9 +39,11 @@
         </div>
         <div class="field-div">
           <label for="due-date">
-            <p>Due:</p>
+            <p>Due on:</p>
           </label>
           <input class="form-field" type="date" id="due-date" name="dueDate" />
+          <span>at</span>
+          <input class="form-field" type="time" id="due-time" name="dueTime" />
         </div>
         <button class="submit-btn" id="task-submit" type="submit" value="submit">Add to Project</button>
       </form>
@@ -52,7 +54,7 @@
     <div class="modal-content">
       <header>
         <span>Create a new project</span>
-        <button id="close-btn"><i class="fas fa-times"></i></button>
+        <button class="close-btn"><i class="fas fa-times"></i></button>
       </header>
       <form id="project-form" class="task-form" onsubmit="return false">
         <div class="field-div">

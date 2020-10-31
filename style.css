@@ -128,7 +128,7 @@ h3 {
     background-color: rgb(32, 140, 173);
 }
 
-#close-btn {
+.close-btn {
     background-color: transparent;
     border: none;
     position: absolute;
@@ -280,4 +280,5 @@ h3 {
 	background-color: #f33434;
 	border: 1px solid #3a3a3a;
 	border-radius: 5px;
+	cursor: pointer;
 }
