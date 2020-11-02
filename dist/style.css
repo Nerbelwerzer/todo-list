@@ -135,7 +135,7 @@ h3 {
     background-color: transparent;
     border: none;
     position: absolute;
-    top: 0;
+    top: 3px;
     right: 0;
     font-size: 1.3em;
     color: #fff;
@@ -201,7 +201,7 @@ h3 {
 
 .task-div {
 	position: relative;
-	padding: 30px 25px 25px 25px;
+	margin: 30px 25px 25px 25px;
 }
 
 .item-board {
@@ -245,11 +245,11 @@ h3 {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-  }
+}
 
-  .dropdown-content a:hover {
-      background-color: rgb(209, 210, 236);
-  }
+.dropdown-content a:hover {
+    background-color: rgb(209, 210, 236);
+}
 
 .show {
     display: block
@@ -360,6 +360,16 @@ h3 {
 		padding: 30px 0
 	}
 
+	.item-board {
+		border-bottom: 1px solid #666;
+		height: 75vh;
+		overflow: scroll;
+	}
+
+	.task-div {
+		
+	}
+
 	.project-title  {
 		font-size: 1.5rem;
 	}
@@ -405,13 +415,13 @@ h3 {
 	}
 
 	#menu-btn {
-		bottom: 40px;
+		bottom: 30px;
 		right: 30px;
 	}
 
 	#mobile-add-btn {
-		bottom: 130px;
-		right: 40px;
+		bottom: 40px;
+		right: 120px;
 		height: 60px;
 		width: 60px;
 	}
