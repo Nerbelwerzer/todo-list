@@ -51,6 +51,9 @@ table {
 * {
 	box-sizing: border-box;
 }
+*:focus {
+    outline: 0 !important;
+}
 
 h2 {
 	font-size: 1.5rem;
@@ -402,13 +405,13 @@ h3 {
 	}
 
 	#menu-btn {
-		bottom: 60px;
-		right: 40px;
+		bottom: 40px;
+		right: 30px;
 	}
 
 	#mobile-add-btn {
-		bottom: 150px;
-		right: 50px;
+		bottom: 130px;
+		right: 40px;
 		height: 60px;
 		width: 60px;
 	}
@@ -419,6 +422,8 @@ h3 {
 
 	.modal-content {
 		width: 100%;
+		max-height: 300px;
 		top: -40px;
+		overflow: scroll;
 	}
 }
