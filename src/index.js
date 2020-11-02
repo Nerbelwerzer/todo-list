@@ -1,125 +1,155 @@
-import { App } from './app'
-import { parse, formatDistanceToNow } from 'date-fns'
+import {App} from './app';
+import {parse, formatDistanceToNow} from 'date-fns';
 
-const Doc = (function () {
-    //Tasks DOM
-    const itemBoard = document.getElementById('item-board');
-    const newTaskBtn = document.getElementById('new-task-btn');
-    const taskModal = document.getElementById('task-modal');
-    const taskForm = document.getElementById('task-form');
-    const taskSubmit = document.getElementById('task-submit');
-    document.getElementById("due-time").defaultValue = "18:00"; 
-    //Projects DOM
-    const projectList = document.getElementById('project-list');
-    const newProjBtn = document.getElementById('new-proj-btn');
-    const projModal = document.getElementById('project-modal');
-    const projForm = document.getElementById('project-form');
-    const projSubmit = document.getElementById('project-submit');
-    const projDel = document.getElementById('proj-del-btn');
+const Doc = (function() {
+  // Tasks DOM
+  const itemBoard = document.getElementById('item-board');
+  const newTaskBtn = document.getElementById('new-task-btn');
+  const taskModal = document.getElementById('task-modal');
+  const taskForm = document.getElementById('task-form');
+  const taskSubmit = document.getElementById('task-submit');
+  document.getElementById('due-time').defaultValue = '18:00';
+  // Projects DOM
+  const projectList = document.getElementById('project-list');
+  const newProjBtn = document.getElementById('new-proj-btn');
+  const projModal = document.getElementById('project-modal');
+  const projForm = document.getElementById('project-form');
+  const projSubmit = document.getElementById('project-submit');
+  const projDel = document.getElementById('proj-del-btn');
 
-    const closeBtn = document.querySelectorAll('.close-btn');
+  const closeBtn = document.querySelectorAll('.close-btn');
+  const menuBtn = document.getElementById('menu-btn')
+  const projMenu = document.getElementById('project-menu')
 
-    closeBtn.forEach((btn) => {
-        btn.addEventListener('click', () => {
-            projModal.style.display = 'none';
-            taskModal.style.display = 'none';
-        })
-    })
+  closeBtn.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      projModal.style.display = 'none';
+      taskModal.style.display = 'none';
+    });
+  });
 
-    displayTasks()
-    displayProjectList()
+  displayTasks();
+  displayProjectList();
 
-    newTaskBtn.addEventListener('click', () => {
-        taskModal.style.display = 'block';
-    })
+  menuBtn.addEventListener('click', () => {
+    projMenu.classList.toggle('show-menu')
+  })
 
-    taskSubmit.addEventListener('click', () => {
-        taskModal.style.display = 'none';
-        let newTask = App.newItem(taskForm);
-        taskForm.reset();
-        appendTask(newTask);
-    })
+  newTaskBtn.addEventListener('click', () => {
+    taskModal.style.display = 'block';
+  });
 
-    newProjBtn.addEventListener('click', () => {
-        projModal.style.display = 'block';
-    })
+  taskSubmit.addEventListener('click', () => {
+    taskModal.style.display = 'none';
+    const newTask = App.newItem(taskForm);
+    taskForm.reset();
+    appendTask(newTask);
+  });
 
-    projSubmit.addEventListener('click', () => {
-        projModal.style.display = 'none'
-        let newProject = App.addNewProject(projForm.title.value);
-        appendProject(newProject);
-        projForm.reset()
-        displayTasks();
-    })
+  newProjBtn.addEventListener('click', () => {
+    projModal.style.display = 'block';
+  });
 
-    projDel.addEventListener('click', () => {
-        App.deleteProject();
-        displayProjectList();
-        displayTasks();
-    })
+  projSubmit.addEventListener('click', () => {
+    projModal.style.display = 'none';
+    const newProject = App.addNewProject(projForm.title.value);
+    appendProject(newProject);
+    projForm.reset();
+    displayTasks();
+  });
 
-    function appendProject(project) {
-        let li = document.createElement('li');
-        li.textContent = project.title;
-        li.setAttribute('class', 'project-title');
-        li.addEventListener('click', () => {
-            App.setActiveProject(project);
-            highlightTitle(li);
-            displayTasks();
-        })
-        if (project === App.getActiveProject()) { highlightTitle(li) }
-        projectList.appendChild(li);
+  projDel.addEventListener('click', () => {
+    App.deleteProject();
+    displayProjectList();
+    displayTasks();
+  });
+
+  function appendProject(project) {
+    const li = document.createElement('li');
+    li.textContent = project.title;
+    li.setAttribute('class', 'project-title');
+    li.addEventListener('click', () => {
+      App.setActiveProject(project);
+      highlightTitle(li);
+      displayTasks();
+    });
+    if (project === App.getActiveProject()) {
+      highlightTitle(li);
     }
+    projectList.appendChild(li);
+  }
 
-    function appendTask(task) {
-        let dueDate = formatDistanceToNow(parse(task.dueDate, 'yyyy-MM-dd HH:mm', new Date()), { addSuffix: true });
-        let taskCard = document.createElement('div');
-        let delBtn = document.createElement('div');
-        taskCard.setAttribute('class', 'task-card');
-        delBtn.setAttribute('class', 'del-btn');
-        delBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
-        delBtn.addEventListener('click', () => {
-            App.deleteTask(task);
-            displayTasks();
-        })
-
-        taskCard.innerHTML = `
-            <h3 class="task-title">${task.title}</h3>
-            <div class="task-content"><span class="task-due">Due: <time>${dueDate}</time></span>
-            <p class="task-notes">${task.notes}</p></div>
-           `;
-        if (task.priority == 'high') {
-            taskCard.classList.add('urgent');
-        } else if (task.priority == 'med') {
-            taskCard.classList.add('medium-pri');
-        } else {
-            taskCard.classList.add('low-pri');
-        }
-        taskCard.appendChild(delBtn);
-        itemBoard.appendChild(taskCard);
+  function appendTask(task) {
+    let dueDate
+    try {
+      dueDate = 'Due ' + formatDistanceToNow(
+        parse(task.dueDate, 'yyyy-MM-dd HH:mm', new Date()), {addSuffix: true})
+        + ` (${task.dueDate})`;
+    } catch {
+      dueDate = 'No deadline specified'
     }
+    const taskCard = document.createElement('div');
+    const delBtn = document.createElement('div');
+    const taskNotes = document.createElement('div')
+    const doneBtn = document.createElement('div')
+    taskNotes.innerHTML = `<p class="task-notes">${task.notes}</p>`
+    taskNotes.setAttribute('class', 'hide')
+    taskCard.setAttribute('class', 'task-card');
+    delBtn.setAttribute('class', 'del-btn');
+    delBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+    delBtn.addEventListener('click', () => {
+      App.deleteTask(task);
+      displayTasks();
+    });
+    doneBtn.setAttribute('class', 'done-btn')
+    doneBtn.innerHTML = '<i class="far fa-check-circle"></i>'
+    doneBtn.addEventListener('click', () => {
+      doneBtn.classList.toggle('task-done')
+    })
+    
 
-    function displayProjectList() {
-        projectList.textContent = '';
-        for (let i of App.getProjects()) {
-            appendProject(i);
-        }
+    taskCard.innerHTML = `
+        <h3 class="task-title">${task.title}</h3>
+        <div class="task-content"><span class="task-due">
+        <time>${dueDate}</time></span>
+        `;
+    if (task.priority == 'high') {
+      taskCard.classList.add('urgent');
+    } else if (task.priority == 'med') {
+      taskCard.classList.add('medium-pri');
+    } else {
+      taskCard.classList.add('low-pri');
     }
+    taskCard.appendChild(doneBtn)
+    taskCard.appendChild(delBtn);
+    taskCard.appendChild(taskNotes);
 
-    function displayTasks() {
-        let taskList = App.getActiveProject().items;
-        itemBoard.textContent = '';
-        for (let i of taskList) { appendTask(i) };
-    }
 
-    function highlightTitle(li) {
-        let projectTitles = document.querySelectorAll('.project-title');
-        for (let i of projectTitles) {
-            i.style.backgroundColor = 'transparent';
-        }
-        li.style.backgroundColor = '#a7dbf3';
+    itemBoard.appendChild(taskCard);
+    taskCard.addEventListener('click', () => {
+      taskNotes.classList.toggle('hide')
+    });
+  }
+
+  function displayProjectList() {
+    projectList.textContent = '';
+    for (const i of App.getProjects()) {
+      appendProject(i);
     }
+  }
+
+  function displayTasks(taskList = App.getActiveProject().items) {
+    itemBoard.textContent = '';
+    for (const i of taskList) {
+      appendTask(i);
+    }
+  }
+
+  function highlightTitle(li) {
+    const projectTitles = document.querySelectorAll('.project-title');
+    for (const i of projectTitles) {
+      i.style.backgroundColor = 'transparent';
+    }
+    li.style.backgroundColor = '#a7dbf3';
+  }
 })();
-
-
-
