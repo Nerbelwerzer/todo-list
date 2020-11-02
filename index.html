@@ -3,6 +3,7 @@
 
 <head>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
   <script src="https://kit.fontawesome.com/32e5e73d4b.js" crossorigin="anonymous"></script>
   <meta content="width=device-width, initial-scale=1" name="viewport" />
   <title>Test</title>
@@ -82,9 +83,9 @@
       </div>
       <div class="task-div">
         <button class="add-btn" id="new-task-btn"><i class="fas fa-plus" title="Add a task"></i></button>
-        <header>
-          <h2>My tasks</h2>
-          <div>
+        <header class="tasks-header">
+          <h2>Tasks for <span id="project-title"></span></h2>
+          <div class="options">
             <div class="dropdown">
               <button id="sort-btn" class="btn">Sort by...</button>
               <div id="dropContent" class="dropdown-content">
@@ -92,7 +93,7 @@
                 <a id="sort-added" href="#">Added</a>
               </div>
             </div>
-            <button id="proj-del-btn" class="btn"><i class="fas fa-trash-alt"></i>Delete Project</button>
+            <button id="proj-del-btn" class="btn"><i class="fas fa-trash-alt"></i></button>
           </div>
         </header>
         <div class="item-board" id="item-board">
