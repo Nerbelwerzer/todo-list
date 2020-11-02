@@ -1,7 +1,7 @@
-import {App} from './app';
-import {parse, formatDistanceToNow} from 'date-fns';
+import { App } from './app';
+import { parse, formatDistanceToNow } from 'date-fns';
 
-const Doc = (function() {
+const Doc = (function () {
   // Tasks DOM
   const itemBoard = document.getElementById('item-board');
   const newTaskBtn = document.getElementById('new-task-btn');
@@ -41,7 +41,7 @@ const Doc = (function() {
     App.dueDateSort()
     displayTasks()
   });
-  
+
   sortAdded.addEventListener('click', () => {
     App.addedDateSort()
     displayTasks()
@@ -84,9 +84,11 @@ const Doc = (function() {
   });
 
   projDel.addEventListener('click', () => {
-    App.deleteProject();
-    displayProjectList();
-    displayTasks();
+    if (confirm("Delete project?")) {
+      App.deleteProject();
+      displayProjectList();
+      displayTasks();
+    }
   });
 
   mobileAddBtn.addEventListener('click', () => {
@@ -112,7 +114,7 @@ const Doc = (function() {
     let dueDate
     try {
       dueDate = 'Due ' + formatDistanceToNow(
-        parse(task.dueDate, 'yyyy-MM-dd HH:mm', new Date()), {addSuffix: true})
+        parse(task.dueDate, 'yyyy-MM-dd HH:mm', new Date()), { addSuffix: true })
         + ` (${task.dueDate})`;
     } catch {
       dueDate = 'No deadline specified'
@@ -135,7 +137,7 @@ const Doc = (function() {
     doneBtn.addEventListener('click', () => {
       doneBtn.classList.toggle('task-done')
     })
-    
+
     taskCard.innerHTML = `
         <h3 class="task-title">${task.title}</h3>
         <div class="task-content"><span class="task-due">
@@ -166,6 +168,8 @@ const Doc = (function() {
   }
 
   function displayTasks(taskList = App.getActiveProject().items) {
+    document.getElementById('project-title').textContent = 
+      App.getActiveProject().title;
     itemBoard.textContent = '';
     for (const i of taskList) {
       appendTask(i);
@@ -181,8 +185,8 @@ const Doc = (function() {
   }
 
   return {
-      displayProjectList,
-      displayTasks
+    displayProjectList,
+    displayTasks
   }
 })();
 
