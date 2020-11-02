@@ -8,6 +8,7 @@ const Doc = (function() {
   const taskModal = document.getElementById('task-modal');
   const taskForm = document.getElementById('task-form');
   const taskSubmit = document.getElementById('task-submit');
+  const mobileAddBtn = document.getElementById('mobile-add-btn')
   document.getElementById('due-time').defaultValue = '18:00';
   // Projects DOM
   const projectList = document.getElementById('project-list');
@@ -64,6 +65,10 @@ const Doc = (function() {
     displayTasks();
   });
 
+  mobileAddBtn.addEventListener('click', () => {
+    taskModal.style.display = 'block';
+  });
+
   function appendProject(project) {
     const li = document.createElement('li');
     li.textContent = project.title;
@@ -107,7 +112,6 @@ const Doc = (function() {
       doneBtn.classList.toggle('task-done')
     })
     
-
     taskCard.innerHTML = `
         <h3 class="task-title">${task.title}</h3>
         <div class="task-content"><span class="task-due">
@@ -123,7 +127,6 @@ const Doc = (function() {
     taskCard.appendChild(doneBtn)
     taskCard.appendChild(delBtn);
     taskCard.appendChild(taskNotes);
-
 
     itemBoard.appendChild(taskCard);
     taskCard.addEventListener('click', () => {
