@@ -22,6 +22,13 @@ const Doc = (function() {
   const menuBtn = document.getElementById('menu-btn')
   const projMenu = document.getElementById('project-menu')
 
+  const sortMenu = document.getElementById('sort-btn')
+  const sortDue = document.getElementById('sort-due')
+  const sortAdded = document.getElementById('sort-added')
+
+  displayTasks();
+  displayProjectList();
+
   closeBtn.forEach((btn) => {
     btn.addEventListener('click', () => {
       projModal.style.display = 'none';
@@ -29,11 +36,31 @@ const Doc = (function() {
     });
   });
 
-  displayTasks();
-  displayProjectList();
+  sortMenu.addEventListener('click', () => {
+    document.getElementById('dropContent').classList.toggle('show');
+  });
+
+  sortDue.addEventListener('click', () => {
+    App.dueDateSort()
+    displayTasks()
+  });
+  
+  sortAdded.addEventListener('click', () => {
+    App.addedDateSort()
+    displayTasks()
+  });
+
+  window.onclick = function (event) {
+    let dropContent = document.getElementById('dropContent')
+    if (!event.target.matches('.drop-btn')) {
+      if (dropContent.classList.contains('show')) {
+        dropContent.classList.remove('show');
+      }
+    }
+  }
 
   menuBtn.addEventListener('click', () => {
-    projMenu.classList.toggle('show-menu')
+    projMenu.classList.toggle('show-menu');
   })
 
   newTaskBtn.addEventListener('click', () => {

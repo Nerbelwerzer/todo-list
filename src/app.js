@@ -60,6 +60,16 @@ const App = (function () {
     save();
   }
 
+  function dueDateSort() {
+    activeProject.items.sort((a,b) => a.dueDate < b.dueDate ? -1 : 1);
+    save();
+  }
+
+  function addedDateSort() {
+    activeProject.items.sort((a,b) => a.log < b.log ? -1 : 1);
+    save();
+  }
+
   function save() {
     localStorage.setItem('projects', JSON.stringify(projects));
   }
@@ -82,6 +92,8 @@ const App = (function () {
     newItem,
     deleteTask,
     deleteProject,
+    dueDateSort,
+    addedDateSort
   };
 })();
 
