@@ -363,7 +363,6 @@ h3 {
 
 	.item-board {
 		align-items: center;
-		height: 75vh;
 		overflow: scroll;
 	}
 
@@ -394,14 +393,21 @@ h3 {
 		display: block;
 		position: absolute;
 		font-size: 2.7rem;
-		background: #fff;
-		border: 1px solid rgb(231, 231, 231);
+		background: rgba(255, 255, 255, .8);
+		border: none;
 		border-radius: 50%;
 		width: 70px;
 		height: 70px;
 		color: #21c4e0;
 		cursor: pointer;
-		z-index: 1
+		z-index: 1;
+		box-shadow: 3px 3px 7px #bbb
+	}
+
+	.mobile-nav {
+		position: sticky;
+		bottom: 0;
+		height: 80px;
 	}
 
 	#new-task-btn {
