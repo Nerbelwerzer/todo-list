@@ -215,15 +215,20 @@ h3 {
 	padding: 0 12px 6px 12px;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 
-.drop-btn {
+#proj-del-btn {
+	color: #fff;
+	background-color: #f33434;
+}
+
+.btn {
 	color: rgb(255, 255, 255);
-	background-color: #3f75bd;
+	background-color: #418aeb;
 	border: 1px solid #3a3a3a;
-	border-radius: 5px;
 	cursor: pointer;
-	padding: 4px
+	padding: 6px
 }
 
 .dropdown {
@@ -331,20 +336,17 @@ h3 {
 
 .task-done { color: rgb(48, 238, 0) }
 
-#proj-del-btn {
-	color: #fff;
-	background-color: #f33434;
-	border: 1px solid #3a3a3a;
-	border-radius: 5px;
-	cursor: pointer;
-	padding: 4px;
-}
+
 
 .mobile-btn {
 	display: none;
 }
 
 @media screen and (max-width: 600px){
+
+	.btn {
+		font-size: .9rem
+	}
 
 	.project-div {
 		position: fixed;
@@ -363,6 +365,8 @@ h3 {
 
 	.item-board {
 		align-items: center;
+		height: 100vh;
+		margin-bottom: 0px;
 		overflow: scroll;
 	}
 
@@ -391,23 +395,16 @@ h3 {
 
 	.mobile-btn {
 		display: block;
-		position: absolute;
+		position: fixed;
 		font-size: 2.7rem;
-		background: rgba(255, 255, 255, .8);
-		border: none;
+		background: #fff;
+		border: 1px solid rgb(231, 231, 231);
 		border-radius: 50%;
 		width: 70px;
 		height: 70px;
 		color: #21c4e0;
 		cursor: pointer;
-		z-index: 1;
-		box-shadow: 3px 3px 7px #bbb
-	}
-
-	.mobile-nav {
-		position: sticky;
-		bottom: 0;
-		height: 80px;
+		z-index: 1
 	}
 
 	#new-task-btn {

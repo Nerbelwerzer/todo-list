@@ -49,7 +49,7 @@ const Doc = (function() {
 
   window.onclick = function (event) {
     let dropContent = document.getElementById('dropContent')
-    if (!event.target.matches('.drop-btn')) {
+    if (!event.target.matches('.btn')) {
       if (dropContent.classList.contains('show')) {
         dropContent.classList.remove('show');
       }
