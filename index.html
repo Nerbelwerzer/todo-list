@@ -69,68 +69,39 @@
 
   </div>
 
-
-  <header>
-    <h1>To-do List</h1>
-  </header>
-
-
   <main>
     <div class="container">
-      <div class="project-div">
+      <div id="project-menu" class="project-div">
 
         <button class="add-btn" id="new-proj-btn"><i class="fas fa-folder-plus"
             title="Create a new project"></i></button>
         <h2>My projects</h2>
         <ul class="project-list" id="project-list">
-          <!-- <li>Sample project</li>
-          <li>Sample project</li>
-          <li>Sample project</li>
-          <li>Sample project</li>
-          <li>Sample project</li>
-          <li>Sample project</li> -->
+
         </ul>
       </div>
       <div class="task-div">
         <button class="add-btn" id="new-task-btn"><i class="fas fa-plus" title="Add a task"></i></button>
         <header>
           <h2>My tasks</h2>
-          <button id="proj-del-btn"><i class="fas fa-trash-alt"></i>Delete Project</button>
+          <div>
+            <div class="dropdown">
+              <button class="drop-btn">Sort by...</button>
+              <div id="dropContent" class="dropdown-content">
+                <a href="#">Example</a>
+                <a href="#">Example</a>
+                <a href="#">Example</a>
+                <a href="#">Example</a>
+              </div>
+            </div>
+            <button id="proj-del-btn"><i class="fas fa-trash-alt"></i>Delete Project</button>
+          </div>
         </header>
         <div class="item-board" id="item-board">
-          <!-- <div class="task-card">
-            <h3 class="task-title">Task title</h3>
-            <span class="task-due">Due: <time>2/11/2020</time></span>
-            <p class="task-notes">Sample task card notes put here as a placeholder</p>
-          </div>
-          <div class="task-card">
-            <h3 class="task-title">Task title</h3>
-            <span class="task-due">Due: <time>2/11/2020</time></span>
-            <p class="task-notes">Sample task card notes put here as a placeholder</p>
-          </div>
-          <div class="task-card">
-            <h3 class="task-title">Task title</h3>
-            <span class="task-due">Due: <time>2/11/2020</time></span>
-            <p class="task-notes">Sample task card notes put here as a placeholder</p>
-          </div>
-          <div class="task-card">
-            <h3 class="task-title">Task title</h3>
-            <span class="task-due">Due: <time>2/11/2020</time></span>
-            <p class="task-notes">Sample task card notes put here as a placeholder</p>
-          </div>
-          <div class="task-card">
-            <h3 class="task-title">Task title</h3>
-            <span class="task-due">Due: <time>2/11/2020</time></span>
-            <p class="task-notes">Sample task card notes put here as a placeholder</p>
-          </div>
-          <div class="task-card">
-            <h3 class="task-title">Task title</h3>
-            <span class="task-due">Due: <time>2/11/2020</time></span>
-            <p class="task-notes">Sample task card notes put here as a placeholder</p>
-          </div> -->
-        </div>
 
+        </div>
       </div>
+      <div><button id="menu-btn"><i class="fas fa-bars"></i></button></div>
     </div>
   </main>
   <script src="main.js"></script>
