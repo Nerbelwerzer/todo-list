@@ -95,12 +95,12 @@ h3 {
     font-size: 1.2em;
     text-align: center;
     width: 100%;
-	padding: 12px 0;
+	padding: 7px 0;
 	color: #000
 }
 
 .modal-content div {
-    padding: 12px 0;
+    padding: 9px 0;
 }
 
 .form-field {
@@ -111,7 +111,7 @@ h3 {
 
 .time-field {
 	background: #fff;
-	padding: 9px 0px;
+	padding: 5px 0px;
 }
 
 #title { width: 100% }
@@ -119,6 +119,12 @@ h3 {
 #text-area {
 	width: 100%;
 	resize: none;
+}
+
+.due-div {
+	display: flex;
+	align-items: center;
+	gap: 5px;
 }
 
 .submit-btn {
@@ -139,7 +145,7 @@ h3 {
     background-color: transparent;
     border: none;
     position: absolute;
-    top: 3px;
+    top: 0px;
     right: 0;
     font-size: 1.3em;
     color: rgb(211, 211, 211);
