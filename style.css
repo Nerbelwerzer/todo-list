@@ -66,11 +66,13 @@ h3 {
 
 
 .modal {
-    display: none;
+	display: block;
     position: fixed;
     top: 0;
     width: 100%;
-    height: 100%;
+	height: 0%;
+	transition: 0.3s;
+	overflow: hidden;
     background-color: rgba(27, 27, 27, 0.9);
     z-index: 3;
 }
@@ -80,7 +82,7 @@ h3 {
     margin: 10% auto;
     width: 290px;
     background: rgb(252, 252, 252);
-    color: #000;
+    color: rgb(53, 53, 53);
     border: 1px solid #000;
     border-radius: 5px;
     display: flex;
@@ -91,12 +93,11 @@ h3 {
 }
 
 .modal-content header {
-    background-color: rgb(0, 174, 255);
-    color: #fff;
     font-size: 1.2em;
     text-align: center;
     width: 100%;
-    padding: 12px 0;
+	padding: 12px 0;
+	color: #000
 }
 
 .modal-content div {
@@ -105,7 +106,7 @@ h3 {
 
 .form-field {
     padding: 9px;
-    border: 1px solid gray;
+    border: 1px solid rgb(224, 224, 224);
     border-radius: 4px;
     font-size: inherit;
 }
@@ -119,10 +120,10 @@ h3 {
 
 .submit-btn {
     color: #fff;
-    background-color: rgb(0, 174, 255);
+    background-color: rgb(63, 154, 207);
     border: 1px solid gray;
 	padding: 12px 16px;
-	width:50%;
+	width:60%;
 	margin: 0 auto;
     font: inherit;
     cursor: pointer;
@@ -140,7 +141,7 @@ h3 {
     top: 3px;
     right: 0;
     font-size: 1.3em;
-    color: #fff;
+    color: rgb(211, 211, 211);
     cursor: pointer;
 }
 
@@ -163,8 +164,8 @@ h3 {
 
 .container {
 	display: grid;
-	grid-template-columns: 2fr 5fr;
-	max-width: 800px;
+	grid-template-columns: 2fr 4fr;
+	max-width: 750px;
 	margin: 0 auto;
 }
 
@@ -205,6 +206,13 @@ h3 {
 .task-div {
 	position: relative;
 	padding: 30px 0px 25px 0px;
+}
+
+.options {
+	display: flex;
+	justify-content: space-between;
+	margin: 0 12px;
+	gap: 5px;
 }
 
 .item-board {
@@ -277,16 +285,20 @@ h3 {
 	display: flex;
 	flex-direction: column;
 	cursor: pointer;
-	background-color: rgb(255, 255, 255);
 	box-shadow: 0px 3px 5px #b3b3b3;
 	padding-bottom: 5px;
-	width: 300px;
+	width: 100%;
+	background-color: rgb(255, 255, 255);
+	border-top-right-radius: 12px;
+}
+
+.task-card h3 {
+	border-top-right-radius: 12px;
 }
 
 .urgent h3 {
 	background-color: #f34c4c;
 	color: white;
-
 }
 
 .medium-pri h3 {
@@ -400,11 +412,7 @@ h3 {
 		padding: 6px 0 4px 0;
 	}
 
-	.options {
-		display: flex;
-		justify-content: space-between;
-		margin: 0 12px;
-	}
+
 
 	#project-title {
 		font-size: 1.2rem
@@ -431,14 +439,6 @@ h3 {
 
 	.task-card {
 		width: 90vw;
-		background-color: rgb(255, 255, 255);
-		border-top-right-radius: 12px;
-
-	}
-
-	.task-card h3 {
-		border-top-right-radius: 12px;
-
 	}
 
 	.mobile-btn {
@@ -488,6 +488,7 @@ h3 {
 		max-height: 100%;
 		top: -40px;
 		overflow: scroll;
+		border: none;
 	}
 
 	.modal-content form {
