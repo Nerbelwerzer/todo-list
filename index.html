@@ -3,7 +3,7 @@
 
 <head>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/32e5e73d4b.js" crossorigin="anonymous"></script>
   <meta content="width=device-width, initial-scale=1" name="viewport" />
   <title>Test</title>
@@ -86,11 +86,20 @@
         <header class="tasks-header">
           <h2>Tasks for <span id="project-title"></span></h2>
           <div class="options">
-            <div class="dropdown">
-              <button id="sort-btn" class="btn">Sort by...</button>
-              <div id="dropContent" class="dropdown-content">
-                <a id="sort-due" href="#">Due by</a>
-                <a id="sort-added" href="#">Added</a>
+            <div class="options-left">
+              <div class="dropdown">
+                <button id="sort-btn" class="btn">Sort by...</button>
+                <div id="sortContent" class="dropdown-content">
+                  <a id="sort-due" href="#">Due by</a>
+                  <a id="sort-added" href="#">Added</a>
+                </div>
+              </div>
+              <div class="dropdown">
+                <button id="filter-btn" class="btn">Filter...</button>
+                <div id="filterContent" class="dropdown-content">
+                  <a id="filter-done" href="#">Hide 'done'</a>
+                  <a id="filter-urgent" href="#">High-priority only</a>
+                </div>
               </div>
             </div>
             <button id="proj-del-btn" class="btn"><i class="fas fa-trash-alt"></i></button>
