@@ -17,8 +17,8 @@ const Doc = (function () {
 
   closeBtn.forEach((btn) => {
     btn.addEventListener('click', () => {
-      projModal.style.display = 'none';
-      taskModal.style.display = 'none';
+      projModal.style.height = '0%';
+      taskModal.style.height = '0%';
     });
   });
 
@@ -78,7 +78,7 @@ const Doc = (function () {
   })
 
   document.getElementById('new-task-btn').addEventListener('click', () => {
-    taskModal.style.display = 'block';
+    taskModal.style.height = '100%';
   });
 
   document.getElementById('task-submit').addEventListener('click', () => {
@@ -89,7 +89,7 @@ const Doc = (function () {
   });
 
   document.getElementById('new-proj-btn').addEventListener('click', () => {
-    projModal.style.display = 'block';
+    projModal.style.height = '100%';
   });
 
   document.getElementById('project-submit').addEventListener('click', () => {
@@ -109,7 +109,7 @@ const Doc = (function () {
   });
 
   document.getElementById('mobile-add-btn').addEventListener('click', () => {
-    taskModal.style.display = 'block';
+    taskModal.style.height = '100%';
   });
 
   function appendProject(project) {

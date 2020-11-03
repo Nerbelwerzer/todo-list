@@ -18,10 +18,8 @@
       </header>
       <form id="task-form" class="task-form" onsubmit="return false">
         <div class="field-div">
-          <label for="title">
-            <p>Title:</p>
-          </label>
-          <input class="form-field" type="text" id="title" name="title" />
+
+          <input class="form-field" type="text" id="title" name="title" placeholder="Title"/>
         </div>
         <div class="field-div">
           <p>Priority:</p>
@@ -32,12 +30,7 @@
           <input type="radio" id="high-pri" name="priority" value="high">
           <label for="high-pri">High</label>
         </div>
-        <div class="field-div">
-          <label for="notes">
-            <p>Notes:</p>
-          </label>
-          <textarea id="text-area" class="form-field" id="notes" name="notes"></textarea>
-        </div>
+
         <div class="field-div">
           <label for="due-date">
             <p>Due on:</p>
@@ -45,6 +38,10 @@
           <input class="form-field" type="date" id="due-date" name="dueDate" />
           <span>at</span>
           <input class="form-field" type="time" id="due-time" name="dueTime" />
+          <div class="field-div">
+ 
+            <textarea id="text-area" class="form-field" id="notes" name="notes" placeholder="notes"></textarea>
+          </div>
         </div>
         <button class="submit-btn" id="task-submit" type="submit" value="submit">Add to Project</button>
       </form>
