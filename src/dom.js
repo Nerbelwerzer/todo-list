@@ -4,27 +4,16 @@ import { parse, formatDistanceToNow } from 'date-fns';
 const Doc = (function () {
   // Tasks DOM
   const itemBoard = document.getElementById('item-board');
-  const newTaskBtn = document.getElementById('new-task-btn');
   const taskModal = document.getElementById('task-modal');
   const taskForm = document.getElementById('task-form');
-  const taskSubmit = document.getElementById('task-submit');
-  const mobileAddBtn = document.getElementById('mobile-add-btn')
   document.getElementById('due-time').defaultValue = '18:00';
   // Projects DOM
   const projectList = document.getElementById('project-list');
-  const newProjBtn = document.getElementById('new-proj-btn');
   const projModal = document.getElementById('project-modal');
   const projForm = document.getElementById('project-form');
-  const projSubmit = document.getElementById('project-submit');
-  const projDel = document.getElementById('proj-del-btn');
 
   const closeBtn = document.querySelectorAll('.close-btn');
-  const menuBtn = document.getElementById('menu-btn')
   const projMenu = document.getElementById('project-menu')
-
-  const sortMenu = document.getElementById('sort-btn')
-  const sortDue = document.getElementById('sort-due')
-  const sortAdded = document.getElementById('sort-added')
 
   closeBtn.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -33,49 +22,83 @@ const Doc = (function () {
     });
   });
 
-  sortMenu.addEventListener('click', () => {
-    document.getElementById('dropContent').classList.toggle('show');
+  document.getElementById('filter-btn').addEventListener('click', () => {
+    document.getElementById('filterContent').classList.toggle('show');
   });
 
-  sortDue.addEventListener('click', () => {
+  document.getElementById('filter-done').addEventListener('click', () => {
+    let taskList = App.filterDone()
+    let cardList = document.querySelectorAll('.log')
+
+    for (let i of cardList) {
+      for (let j of taskList) {
+        if (i.textContent == j.log) {
+          i.parentNode.classList.toggle('hide')
+        }
+      }
+    }
+  });
+
+  document.getElementById('filter-urgent').addEventListener('click', () => {
+    let taskList = App.filterUrgent()
+    let cardList = document.querySelectorAll('.log')
+
+    for (let i of cardList) {
+      for (let j of taskList) {
+        if (i.textContent == j.log) {
+          i.parentNode.classList.toggle('hide')
+        }
+      }
+    }
+  });
+
+  document.getElementById('sort-btn').addEventListener('click', () => {
+    document.getElementById('sortContent').classList.toggle('show');
+  });
+
+  document.getElementById('sort-due').addEventListener('click', () => {
     App.dueDateSort()
     displayTasks()
   });
 
-  sortAdded.addEventListener('click', () => {
+  document.getElementById('sort-added').addEventListener('click', () => {
     App.addedDateSort()
     displayTasks()
   });
 
   window.onclick = function (event) {
-    let dropContent = document.getElementById('dropContent')
+    let sortContent = document.getElementById('sortContent')
+    let filterContent = document.getElementById('filterContent')
     if (!event.target.matches('.btn')) {
-      if (dropContent.classList.contains('show')) {
-        dropContent.classList.remove('show');
+      if (sortContent.classList.contains('show')) {
+        sortContent.classList.remove('show');
+      }
+      if (filterContent.classList.contains('show')) {
+        filterContent.classList.remove('show');
       }
     }
   }
 
-  menuBtn.addEventListener('click', () => {
+  document.getElementById('menu-btn').addEventListener('click', () => {
     projMenu.classList.toggle('show-menu');
   })
 
-  newTaskBtn.addEventListener('click', () => {
+  document.getElementById('new-task-btn').addEventListener('click', () => {
     taskModal.style.display = 'block';
   });
 
-  taskSubmit.addEventListener('click', () => {
+  document.getElementById('task-submit').addEventListener('click', () => {
     taskModal.style.display = 'none';
     const newTask = App.newItem(taskForm);
     taskForm.reset();
     appendTask(newTask);
   });
 
-  newProjBtn.addEventListener('click', () => {
+  document.getElementById('new-proj-btn').addEventListener('click', () => {
     projModal.style.display = 'block';
   });
 
-  projSubmit.addEventListener('click', () => {
+  document.getElementById('project-submit').addEventListener('click', () => {
     projModal.style.display = 'none';
     const newProject = App.addNewProject(projForm.title.value);
     appendProject(newProject);
@@ -83,7 +106,7 @@ const Doc = (function () {
     displayTasks();
   });
 
-  projDel.addEventListener('click', () => {
+  document.getElementById('proj-del-btn').addEventListener('click', () => {
     if (confirm("Delete project?")) {
       App.deleteProject();
       displayProjectList();
@@ -91,7 +114,7 @@ const Doc = (function () {
     }
   });
 
-  mobileAddBtn.addEventListener('click', () => {
+  document.getElementById('mobile-add-btn').addEventListener('click', () => {
     taskModal.style.display = 'block';
   });
 
@@ -123,6 +146,9 @@ const Doc = (function () {
     const delBtn = document.createElement('div');
     const taskNotes = document.createElement('div')
     const doneBtn = document.createElement('div')
+    const log = document.createElement('div')
+    log.textContent = task.log
+    log.classList.add('log', 'hide')
     taskNotes.innerHTML = `<p class="task-notes">${task.notes}</p>`
     taskNotes.setAttribute('class', 'hide')
     taskCard.setAttribute('class', 'task-card');
@@ -161,6 +187,7 @@ const Doc = (function () {
     taskCard.appendChild(doneBtn)
     taskCard.appendChild(delBtn);
     taskCard.appendChild(taskNotes);
+    taskCard.appendChild(log)
 
     itemBoard.appendChild(taskCard);
     taskCard.addEventListener('click', () => {

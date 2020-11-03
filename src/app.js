@@ -13,6 +13,7 @@ class Project {
   constructor(title) {
     this.title = title;
     this.items = [];
+    this.filteredItems = []
   }
 
   addItem(item) {
@@ -74,6 +75,17 @@ const App = (function () {
     localStorage.setItem('projects', JSON.stringify(projects));
   }
 
+  function filterDone() {
+    const result = activeProject.items.filter(item => item.done === true);
+    return result;
+  }
+
+  function filterUrgent() {
+    const result = activeProject.items.filter(item => 
+      item.priority != 'high' || item.done === true)
+    return result
+  }
+
   const toggleDone = (task) => {
     task.done = task.done == true ? false : true;
     save()
@@ -99,7 +111,9 @@ const App = (function () {
     deleteProject,
     dueDateSort,
     addedDateSort,
-    toggleDone
+    toggleDone,
+    filterDone,
+    filterUrgent
   };
 })();
 
