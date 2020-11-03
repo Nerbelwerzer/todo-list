@@ -26,6 +26,10 @@ const App = (function () {
   const projects =
     JSON.parse(localStorage.getItem('projects')) || [defaultProject];
   let activeProject = projects[0] || defaultProject;
+  let filters = {
+    done: false,
+    urgent: false
+  }
 
   function addNewProject(title) {
     const newProject = new Project(title);
@@ -75,21 +79,36 @@ const App = (function () {
     localStorage.setItem('projects', JSON.stringify(projects));
   }
 
-  function filterDone() {
-    const result = activeProject.items.filter(item => item.done === true);
+  function filterDone(items) {
+    const result = items.filter(item => !item.done);
     return result;
   }
 
-  function filterUrgent() {
-    const result = activeProject.items.filter(item => 
-      item.priority != 'high' || item.done === true)
+  function filterUrgent(items) {
+    const result = items.filter(item => 
+      item.priority === 'high')
     return result
   }
 
   const toggleDone = (task) => {
-    task.done = task.done == true ? false : true;
+    task.done = !task.done
     save()
   }
+
+  const toggleFilter = (option) => {
+    filters[option] = !filters[option]
+  }
+
+  const getActiveItems = () => {
+    let items = activeProject.items;
+    if (filters.done){
+      items = filterDone(items);
+    }
+    if (filters.urgent){
+      items = filterUrgent(items);
+    }
+    return items
+  };
 
   const getActiveProject = () => {
     return activeProject;
@@ -101,8 +120,14 @@ const App = (function () {
     return projects;
   };
 
+  const getFilters = () => {
+    return filters
+  }
+
   return {
     getActiveProject,
+    getActiveItems,
+    getFilters,
     setActiveProject,
     getProjects,
     addNewProject,
@@ -112,8 +137,7 @@ const App = (function () {
     dueDateSort,
     addedDateSort,
     toggleDone,
-    filterDone,
-    filterUrgent
+    toggleFilter
   };
 })();
 

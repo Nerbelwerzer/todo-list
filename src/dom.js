@@ -27,29 +27,16 @@ const Doc = (function () {
   });
 
   document.getElementById('filter-done').addEventListener('click', () => {
-    let taskList = App.filterDone()
-    let cardList = document.querySelectorAll('.log')
-
-    for (let i of cardList) {
-      for (let j of taskList) {
-        if (i.textContent == j.log) {
-          i.parentNode.classList.toggle('hide')
-        }
-      }
-    }
+    App.toggleFilter('done')
+    displayTasks()
+    document.getElementById('doneTick').classList.toggle('hide')
   });
 
   document.getElementById('filter-urgent').addEventListener('click', () => {
-    let taskList = App.filterUrgent()
-    let cardList = document.querySelectorAll('.log')
+    App.toggleFilter('urgent')
+    displayTasks()
+    document.getElementById('urgentTick').classList.toggle('hide')
 
-    for (let i of cardList) {
-      for (let j of taskList) {
-        if (i.textContent == j.log) {
-          i.parentNode.classList.toggle('hide')
-        }
-      }
-    }
   });
 
   document.getElementById('sort-btn').addEventListener('click', () => {
@@ -164,6 +151,9 @@ const Doc = (function () {
       App.toggleDone(task)
       doneBtn.classList.toggle('task-done')
       taskCard.classList.toggle('task-card-done')
+      if (App.getFilters().done == true) {
+        taskCard.classList.toggle('hide')
+      }
     })
 
     taskCard.innerHTML = `
@@ -202,7 +192,7 @@ const Doc = (function () {
     }
   }
 
-  function displayTasks(taskList = App.getActiveProject().items) {
+  function displayTasks(taskList = App.getActiveItems()) {
     document.getElementById('project-title').textContent =
       App.getActiveProject().title;
     itemBoard.textContent = '';
