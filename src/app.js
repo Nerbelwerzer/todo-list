@@ -86,7 +86,7 @@ const App = (function () {
 
   function filterUrgent(items) {
     const result = items.filter(item => 
-      item.priority === 'high')
+      item.priority === 'high' && !item.done)
     return result
   }
 

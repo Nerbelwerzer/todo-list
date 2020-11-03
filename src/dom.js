@@ -56,12 +56,19 @@ const Doc = (function () {
   window.onclick = function (event) {
     let sortContent = document.getElementById('sortContent')
     let filterContent = document.getElementById('filterContent')
+
     if (!event.target.matches('.btn')) {
       if (sortContent.classList.contains('show')) {
         sortContent.classList.remove('show');
       }
       if (filterContent.classList.contains('show')) {
         filterContent.classList.remove('show');
+      }
+    }
+
+    if (event.target.matches('.project-list li')) {
+      if (projMenu.classList.contains('show-menu')) {
+        projMenu.classList.remove('show-menu')
       }
     }
   }
@@ -196,8 +203,14 @@ const Doc = (function () {
     document.getElementById('project-title').textContent =
       App.getActiveProject().title;
     itemBoard.textContent = '';
-    for (const i of taskList) {
-      appendTask(i);
+
+    if (taskList.length == 0) {
+      itemBoard.textContent =
+        "Press the '+' button to add a task to this project."
+    } else {
+      for (const i of taskList) {
+        appendTask(i);
+      }
     }
   }
 

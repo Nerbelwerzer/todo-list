@@ -407,6 +407,7 @@ h3 {
 	.item-board {
 		align-items: center;
 		margin-bottom: 70px;
+		color: rgb(97, 97, 97)
 	}
 
 	.project-title  {
