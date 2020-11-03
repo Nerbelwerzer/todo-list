@@ -260,6 +260,12 @@ h3 {
     background-color: rgb(209, 210, 236);
 }
 
+.fa-check {
+	color: rgb(129, 129, 129);
+	font-size: .8rem;
+	margin-left: 30px;
+}
+
 .show {
     display: block
 }
@@ -315,7 +321,7 @@ h3 {
 }
 
 .hide {
-	display: none;
+	display: none !important;
 	overflow: hidden;
 	
 }
