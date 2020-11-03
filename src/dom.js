@@ -135,7 +135,9 @@ const Doc = (function () {
     doneBtn.setAttribute('class', 'done-btn')
     doneBtn.innerHTML = '<i class="far fa-check-circle"></i>'
     doneBtn.addEventListener('click', () => {
+      App.toggleDone(task)
       doneBtn.classList.toggle('task-done')
+      taskCard.classList.toggle('task-card-done')
     })
 
     taskCard.innerHTML = `
@@ -143,12 +145,18 @@ const Doc = (function () {
         <div class="task-content"><span class="task-due">
         <time>${dueDate}</time></span>
         `;
+
     if (task.priority == 'high') {
       taskCard.classList.add('urgent');
     } else if (task.priority == 'med') {
       taskCard.classList.add('medium-pri');
-    } else {
+    } else if (task.priority == 'low') {
       taskCard.classList.add('low-pri');
+    }
+
+    if (task.done === true) {
+      taskCard.classList.add('task-card-done')
+      doneBtn.classList.add('task-done')
     }
     taskCard.appendChild(doneBtn)
     taskCard.appendChild(delBtn);
@@ -168,7 +176,7 @@ const Doc = (function () {
   }
 
   function displayTasks(taskList = App.getActiveProject().items) {
-    document.getElementById('project-title').textContent = 
+    document.getElementById('project-title').textContent =
       App.getActiveProject().title;
     itemBoard.textContent = '';
     for (const i of taskList) {

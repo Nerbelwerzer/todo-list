@@ -74,6 +74,11 @@ const App = (function () {
     localStorage.setItem('projects', JSON.stringify(projects));
   }
 
+  const toggleDone = (task) => {
+    task.done = task.done == true ? false : true;
+    save()
+  }
+
   const getActiveProject = () => {
     return activeProject;
   };
@@ -93,7 +98,8 @@ const App = (function () {
     deleteTask,
     deleteProject,
     dueDateSort,
-    addedDateSort
+    addedDateSort,
+    toggleDone
   };
 })();
 
