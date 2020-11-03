@@ -81,10 +81,9 @@ h3 {
     position: relative;
     margin: 10% auto;
     width: 290px;
-    background: rgb(252, 252, 252);
+    background: rgb(255, 255, 255);
     color: rgb(53, 53, 53);
     border: 1px solid #000;
-    border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,8 +106,12 @@ h3 {
 .form-field {
     padding: 9px;
     border: 1px solid rgb(224, 224, 224);
-    border-radius: 4px;
     font-size: inherit;
+}
+
+.time-field {
+	background: #fff;
+	padding: 9px 0px;
 }
 
 #title { width: 100% }
@@ -120,14 +123,12 @@ h3 {
 
 .submit-btn {
     color: #fff;
-    background-color: rgb(63, 154, 207);
-    border: 1px solid gray;
+	background-color: rgb(63, 154, 207);
 	padding: 12px 16px;
-	width:60%;
+	border: none;
 	margin: 0 auto;
     font: inherit;
     cursor: pointer;
-    border-radius: 4px;
 }
 
 .submit-btn:hover{
@@ -453,7 +454,7 @@ h3 {
 		color: #80c7e7;
 		background-color: rgba(255, 255, 255, 0.9);
 		cursor: pointer;
-		z-index: 3
+		z-index: 2
 	}
 
 	#new-task-btn {
@@ -481,14 +482,19 @@ h3 {
 		font-size: 2rem
 	}
 
+	.modal {
+		background-color: transparent;
+	}
+
 	.modal-content {
-		border-radius: 0;
 		display: block;
 		width: 100%;
 		max-height: 100%;
 		top: -40px;
 		overflow: scroll;
 		border: none;
+		box-shadow: 2px 2px 9px #979797;
+	
 	}
 
 	.modal-content form {
