@@ -9,12 +9,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "babel-loader": "^8.1.0",
     "eslint": "^7.12.1",
     "eslint-config-google": "^0.14.0",
-    "webpack": "^5.3.2",
+    "webpack": "^5.4.0",
     "webpack-cli": "^4.1.0"
   },
   "dependencies": {
-    "date-fns": "^2.16.1"
+    "date-fns": "^2.16.1",
+    "swiped": "^0.1.4"
   }
 }

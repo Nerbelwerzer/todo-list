@@ -81,23 +81,23 @@ const Doc = (function () {
     taskModal.style.height = '100%';
   });
 
-  document.getElementById('task-submit').addEventListener('click', () => {
-    taskModal.style.display = 'none';
+  taskForm.addEventListener('submit', () => {
+    taskModal.style.height = '0';
     const newTask = App.newItem(taskForm);
     taskForm.reset();
     appendTask(newTask);
-  });
+  })
 
-  document.getElementById('new-proj-btn').addEventListener('click', () => {
-    projModal.style.height = '100%';
-  });
-
-  document.getElementById('project-submit').addEventListener('click', () => {
-    projModal.style.display = 'none';
+  projForm.addEventListener('submit', () => {
+    projModal.style.height = '0';
     const newProject = App.addNewProject(projForm.title.value);
     appendProject(newProject);
     projForm.reset();
     displayTasks();
+  })
+
+  document.getElementById('new-proj-btn').addEventListener('click', () => {
+    projModal.style.height = '100%';
   });
 
   document.getElementById('proj-del-btn').addEventListener('click', () => {
