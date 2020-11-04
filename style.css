@@ -73,7 +73,6 @@ h3 {
 	height: 0%;
 	transition: 0.3s;
 	overflow: hidden;
-    background-color: rgba(27, 27, 27, 0.9);
     z-index: 3;
 }
 
@@ -418,8 +417,6 @@ h3 {
 		background-color: #fff;
 		padding: 6px 0 4px 0;
 	}
-
-
 
 	#project-title {
 		font-size: 1.2rem

@@ -19,7 +19,7 @@
       <form id="task-form" class="task-form" onsubmit="return false">
         <div class="field-div">
 
-          <input class="form-field" type="text" id="title" name="title" placeholder="Title"/>
+          <input class="form-field" type="text" id="title" name="title" placeholder="Title" required />
         </div>
         <div class="field-div">
           <p>Priority:</p>
@@ -40,8 +40,8 @@
             <span>at</span>
             <input class="form-field time-field" type="time" id="due-time" name="dueTime" />
           </div>
-            <div class="field-div">
- 
+          <div class="field-div">
+
             <textarea id="text-area" class="form-field" id="notes" name="notes" placeholder="notes"></textarea>
           </div>
         </div>
@@ -61,12 +61,11 @@
           <label for="title">
             <p>Name your project:</p>
           </label>
-          <input class="form-field" type="text" id="title" name="title" />
+          <input class="form-field" type="text" id="title" name="title" required />
         </div>
         <button class="submit-btn" id="project-submit" type="submit" value="submit">Create project</button>
       </form>
     </div>
-
   </div>
 
   <main>
@@ -105,7 +104,6 @@
           </div>
         </header>
         <div class="item-board" id="item-board">
-
         </div>
       </div>
 
