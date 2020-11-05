@@ -212,6 +212,7 @@ h3 {
 .task-div {
 	position: relative;
 	padding: 30px 0px 25px 0px;
+	height: 100vh
 }
 
 .options {
@@ -394,10 +395,11 @@ h3 {
         bottom: 0;
         right: 0;
         z-index: 0;
-        width: 90%;
+
         overflow-y: scroll;
         -webkit-overflow-scrolling: touch;
-        display: none;
+		display: none;
+		border-right: 1px solid red
       }
 
       .slideout-panel {
@@ -447,7 +449,6 @@ h3 {
 		align-items: center;
 		margin-bottom: 70px;
 		color: rgb(97, 97, 97);
-		height: 100vh;
 	}
 
 	.project-title  {
