@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "date-fns": "^2.16.1",
+    "slideout": "^1.0.1",
     "swiped": "^0.1.4"
   }
 }
