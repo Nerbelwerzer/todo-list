@@ -69,43 +69,42 @@
   </div>
 
   <main>
-    <div class="container" id="container">
+    <div class="container">
       <div id="project-menu" class="project-div">
-
-        <button class="add-btn" id="new-proj-btn"><i class="fas fa-folder-plus"
-            title="Create a new project"></i></button>
+      
+        <button class="add-btn" id="new-proj-btn"><i class="fas fa-folder-plus" title="Create a new project"></i></button>
         <h2>My projects</h2>
         <ul class="project-list" id="project-list">
-
+      
         </ul>
       </div>
-      <div class="task-div">
-        <button class="add-btn" id="new-task-btn"><i class="fas fa-plus" title="Add a task"></i></button>
-        <header class="tasks-header">
-          <h2 id="project-title"></h2>
-          <div class="options">
-            <div class="options-left">
-              <div class="dropdown">
-                <button id="sort-btn" class="btn">Sort by...</button>
-                <div id="sortContent" class="dropdown-content">
-                  <a id="sort-due" href="#">Due</a>
-                  <a id="sort-added" href="#">Added</a>
+        <div class="task-div" id="tasks">
+          <button class="add-btn" id="new-task-btn"><i class="fas fa-plus" title="Add a task"></i></button>
+          <header class="tasks-header">
+            <h2 id="project-title"></h2>
+            <div class="options">
+              <div class="options-left">
+                <div class="dropdown">
+                  <button id="sort-btn" class="btn">Sort by...</button>
+                  <div id="sortContent" class="dropdown-content">
+                    <a id="sort-due" href="#">Due</a>
+                    <a id="sort-added" href="#">Added</a>
+                  </div>
+                </div>
+                <div class="dropdown">
+                  <button id="filter-btn" class="btn">Filter...</button>
+                  <div id="filterContent" class="dropdown-content">
+                    <a id="filter-done" href="#">Hide 'done'<i id="doneTick" class="fas fa-check hide"></i></a>
+                    <a id="filter-urgent" href="#">Urgent only<i id="urgentTick" class="fas fa-check hide"></i></a>
+                  </div>
                 </div>
               </div>
-              <div class="dropdown">
-                <button id="filter-btn" class="btn">Filter...</button>
-                <div id="filterContent" class="dropdown-content">
-                  <a id="filter-done" href="#">Hide 'done'<i id="doneTick" class="fas fa-check hide"></i></a>
-                  <a id="filter-urgent" href="#">Urgent only<i id="urgentTick" class="fas fa-check hide"></i></a>
-                </div>
-              </div>
+              <button id="proj-del-btn" class="btn"><i class="fas fa-trash-alt"></i></button>
             </div>
-            <button id="proj-del-btn" class="btn"><i class="fas fa-trash-alt"></i></button>
+          </header>
+          <div class="item-board" id="item-board">
           </div>
-        </header>
-        <div class="item-board" id="item-board">
         </div>
-      </div>
 
     </div>
     <div class="mobile-nav">

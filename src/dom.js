@@ -17,8 +17,17 @@ const Doc = (function () {
   const closeBtn = document.querySelectorAll('.close-btn');
   const projMenu = document.getElementById('project-menu');
 
+  var slideout = new Slideout({
+    'panel': document.getElementById('tasks'),
+    'menu': document.getElementById('project-menu'),
+    'padding': 256,
+    'tolerance': 70,
+    'ease': 'ease-in-out'
+  });
+
+  // Toggle button
   document.querySelector('#menu-btn').addEventListener('click', function () {
-    projMenu.classList.toggle('show-menu');
+    slideout.toggle();
   });
 
   closeBtn.forEach((btn) => {
@@ -73,9 +82,7 @@ const Doc = (function () {
     }
 
     if (event.target.matches('.project-list li')) {
-      if (projMenu.classList.contains('show-menu')) {
-        projMenu.classList.remove('show-menu');
-      }
+      slideout.close()
     }
   }
 
