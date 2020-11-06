@@ -15,17 +15,14 @@ const Doc = (function () {
   const projForm = document.getElementById('project-form');
 
   const closeBtn = document.querySelectorAll('.close-btn');
-  const projMenu = document.getElementById('project-menu');
-
-  var slideout = new Slideout({
+  const slideout = new Slideout({
     'panel': document.getElementById('tasks'),
     'menu': document.getElementById('project-menu'),
-    'padding': 256,
+    'padding': 300,
     'tolerance': 70,
     'ease': 'ease-in-out'
   });
 
-  // Toggle button
   document.querySelector('#menu-btn').addEventListener('click', function () {
     slideout.toggle();
   });
@@ -80,12 +77,7 @@ const Doc = (function () {
         filterContent.classList.remove('show');
       }
     }
-
-    if (event.target.matches('.project-list li')) {
-      slideout.close()
-    }
   }
-
 
   document.getElementById('new-task-btn').addEventListener('click', () => {
     taskModal.style.height = '100%';
@@ -127,6 +119,7 @@ const Doc = (function () {
     li.textContent = project.title;
     li.setAttribute('class', 'project-title');
     li.addEventListener('click', () => {
+      slideout.close()
       App.setActiveProject(project);
       highlightTitle(li);
       displayTasks();
@@ -157,8 +150,10 @@ const Doc = (function () {
     taskCard.appendChild(getDelBtn(task));
     taskCard.appendChild(taskNotes);
     taskCard.appendChild(getLog(task));
-    taskCard.addEventListener('click', () => {
+    taskCard.addEventListener('click', (e) => {
+      if (e.target.classList.contains('task-title')){
       taskNotes.classList.toggle('hide');
+      }
     });
     if (App.getActiveProject().items.length === 1) {
       itemBoard.textContent = '';
@@ -192,7 +187,7 @@ const Doc = (function () {
       App.toggleDone(task);
       doneBtn.classList.toggle('task-done');
       taskCard.classList.toggle('task-card-done');
-      if (App.getFilters().done) {
+      if (App.getFilters().done.enabled) {
         taskCard.classList.toggle('hide');
       }
     })

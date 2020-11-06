@@ -27,8 +27,17 @@ const App = (function () {
     JSON.parse(localStorage.getItem('projects')) || [defaultProject];
   let activeProject = projects[0] || defaultProject;
   let filters = {
-    done: false,
-    urgent: false
+    done: {
+      enabled: false,
+      fn: (items) => { return items.filter(item => !item.done); },
+    },
+    urgent: {
+      enabled: false,
+      fn: (items) => {
+        return items.filter(item =>
+          item.priority === 'high' && !item.done);
+      },
+    },
   }
 
   function addNewProject(title) {
@@ -66,46 +75,34 @@ const App = (function () {
   }
 
   function dueDateSort() {
-    activeProject.items.sort((a,b) => a.dueDate < b.dueDate ? -1 : 1);
+    activeProject.items.sort((a, b) => a.dueDate < b.dueDate ? -1 : 1);
     save();
   }
 
   function addedDateSort() {
-    activeProject.items.sort((a,b) => a.log < b.log ? -1 : 1);
+    activeProject.items.sort((a, b) => a.log < b.log ? -1 : 1);
     save();
   }
-
+  
+  const toggleDone = (task) => {
+    task.done = !task.done;
+    save();
+  }
+  
   function save() {
     localStorage.setItem('projects', JSON.stringify(projects));
   }
-
-  function filterDone(items) {
-    const result = items.filter(item => !item.done);
-    return result;
-  }
-
-  function filterUrgent(items) {
-    const result = items.filter(item => 
-      item.priority === 'high' && !item.done)
-    return result
-  }
-
-  const toggleDone = (task) => {
-    task.done = !task.done
-    save()
-  }
-
+  
   const toggleFilter = (option) => {
-    filters[option] = !filters[option]
+    filters[option].enabled = !filters[option].enabled;
   }
 
   const getActiveItems = () => {
     let items = activeProject.items;
-    if (filters.done){
-      items = filterDone(items);
-    }
-    if (filters.urgent){
-      items = filterUrgent(items);
+    for (const filter in filters) {
+      if (filters[filter].enabled) {
+        items = filters[filter].fn(items);
+      }
     }
     return items
   };
@@ -113,15 +110,17 @@ const App = (function () {
   const getActiveProject = () => {
     return activeProject;
   };
+
   const setActiveProject = (project) => {
     activeProject = project;
   };
+
   const getProjects = () => {
     return projects;
   };
 
   const getFilters = () => {
-    return filters
+    return filters;
   }
 
   return {
